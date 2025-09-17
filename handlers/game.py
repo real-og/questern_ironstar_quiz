@@ -105,7 +105,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-    await message.answer(texts.comment_4)
+    await message.answer(texts.comment_4, disable_web_page_preview=True)
     with open('images/4.jpg', 'rb') as photo:
         await message.answer_photo(photo, reply_markup=kb.next_que)
     await State.que_5_.set()
@@ -177,7 +177,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-    await message.answer(texts.comment_7)
+    await message.answer(texts.comment_7, disable_web_page_preview=True)
     with open('images/7.jpg', 'rb') as photo:
         await message.answer_photo(photo, reply_markup=kb.next_que)
     await State.que_8_.set()
@@ -244,7 +244,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     else:
         await message.answer(random.choice(texts.wrongs))
 
-    await message.answer(texts.comment_10)
+    await message.answer(texts.comment_10,  disable_web_page_preview=True)
     with open('images/10.jpg', 'rb') as photo:
         await message.answer_photo(photo)
     await message.answer(texts.end, reply_markup=kb.result)
@@ -278,7 +278,7 @@ async def send_series(callback: types.CallbackQuery, state: FSMContext):
         
 @dp.message_handler(state=State.feedback)
 async def send_welcome(message: types.Message, state: FSMContext):
-    await message.answer(texts.bye)
+    await message.answer(texts.bye,  disable_web_page_preview=True)
     await State.ended.set()
     await aiotable.update_cell(message.from_user.id, 8, message.text)
         
