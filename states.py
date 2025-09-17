@@ -1,0 +1,25 @@
+from aiogram.dispatcher.filters.state import StatesGroup, State
+
+
+class State(StatesGroup):
+    enter_name = State()
+    waiting_for_number = State()
+    enter_email = State()
+    tap_rules = State()
+    tap_begin = State()
+    tap_round1 = State()
+    que_1 = State()
+    que_2 = State()
+    que_3 = State()
+    que_4 = State()
+    que_5 = State()
+    round2 = State()
+    que_6 = State()
+    que_7 = State()
+    que_8 = State()
+    que_9 = State()
+    que_10 = State()
+    tap_result = State()
+    tap_sub = State()
+    feedback = State()
+    ended = State()
