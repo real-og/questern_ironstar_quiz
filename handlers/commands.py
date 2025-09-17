@@ -19,3 +19,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
         datetime_str = now_utc3.strftime("%Y-%m-%d %H:%M:%S")
 
         await aiotable.append_user_strict(str(datetime_str), str(message.from_user.id), str(username))
+        
+
+@dp.message_handler(commands=['terms'], state="*")
+async def send_welcome(message: types.Message, state: FSMContext):
+    with open('doc.pdf', 'rb') as f:
+        await message.answer_document(f)
