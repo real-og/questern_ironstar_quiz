@@ -25,3 +25,8 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     with open('doc.pdf', 'rb') as f:
         await message.answer_document(f)
+        
+
+@dp.message_handler(commands=['help'], state="*")
+async def send_welcome(message: types.Message, state: FSMContext):
+    await message.answer("Если Вам нужна помощь, пишите @lenkkey")
