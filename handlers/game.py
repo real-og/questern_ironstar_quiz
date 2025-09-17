@@ -193,6 +193,7 @@ async def send_series(callback: types.CallbackQuery, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.bye)
     await State.ended.set()
+    await aiotable.update_cell(message.from_user.id, 17, message.text)
         
         
    
