@@ -21,3 +21,5 @@ check_sub = '🚩ПРОВЕРИТЬ ПОДПИСКУ 🚩'
 feedback_1 = '😞 Так себе'
 feedback_2 = '😊 Хорошо'
 feedback_3 = '🔥 Отлично'
+
+next_que = '🚩 СЛЕДУЮЩИЙ ВОПРОС 🚩'

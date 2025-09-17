@@ -32,6 +32,10 @@ result = ReplyKeyboardMarkup([[buttons.result]],
                                      resize_keyboard=True,
                                      one_time_keyboard=True)
 
+next_que = ReplyKeyboardMarkup([[buttons.next_que]],
+                                     resize_keyboard=True,
+                                     one_time_keyboard=True)
+
 sub = InlineKeyboardMarkup()
 
 button_1 = InlineKeyboardButton(text=buttons.sub, url='https://t.me/ironstar_official ')

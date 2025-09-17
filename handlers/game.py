@@ -40,8 +40,16 @@ async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.comment_1)
     with open('images/1.jpg', 'rb') as photo:
         await message.answer_photo(photo)
+    await message.answer('Готов к следующему вопросу? Жми на кнопку внизу экрана ⤵️', reply_markup=kb.next_que)
+    await State.que_2_.set()
+    
+
+
+@dp.message_handler(state=State.que_2_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_2, reply_markup=kb.variants)
     await State.que_2.set()
+
     
 
 @dp.message_handler(state=State.que_2)
@@ -56,7 +64,13 @@ async def send_welcome(message: types.Message, state: FSMContext):
 
     await message.answer(texts.comment_2)
     with open('images/2.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+
+    await State.que_3_.set()
+    
+
+@dp.message_handler(state=State.que_3_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_3, reply_markup=kb.variants)
     await State.que_3.set()
     
@@ -72,10 +86,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(random.choice(texts.wrongs))
     await message.answer(texts.comment_3)
     with open('images/3.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_4_.set()
+    
+
+@dp.message_handler(state=State.que_4_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_4, reply_markup=kb.variants)
     await State.que_4.set()
-    
 
 @dp.message_handler(state=State.que_4)
 async def send_welcome(message: types.Message, state: FSMContext):
@@ -89,7 +107,12 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(random.choice(texts.wrongs))
     await message.answer(texts.comment_4)
     with open('images/4.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_5_.set()
+    
+
+@dp.message_handler(state=State.que_5_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_5, reply_markup=kb.variants)
     await State.que_5.set()
     
@@ -135,7 +158,11 @@ async def send_welcome(message: types.Message, state: FSMContext):
 
     await message.answer(texts.comment_6)
     with open('images/6.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_7_.set()
+    
+@dp.message_handler(state=State.que_7_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_7, reply_markup=kb.variants)
     await State.que_7.set()
     
@@ -152,10 +179,15 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(random.choice(texts.wrongs))
     await message.answer(texts.comment_7)
     with open('images/7.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_8_.set()
+    
+
+@dp.message_handler(state=State.que_8_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_8, reply_markup=kb.variants)
     await State.que_8.set()
-    
+
 
 @dp.message_handler(state=State.que_8)
 async def send_welcome(message: types.Message, state: FSMContext):
@@ -169,10 +201,15 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(random.choice(texts.wrongs))
     await message.answer(texts.comment_8)
     with open('images/8.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_9_.set()
+    
+
+
+@dp.message_handler(state=State.que_9_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_9, reply_markup=kb.variants)
     await State.que_9.set()
-    
 
 @dp.message_handler(state=State.que_9)
 async def send_welcome(message: types.Message, state: FSMContext):
@@ -186,7 +223,12 @@ async def send_welcome(message: types.Message, state: FSMContext):
         await message.answer(random.choice(texts.wrongs))
     await message.answer(texts.comment_9)
     with open('images/9.jpg', 'rb') as photo:
-        await message.answer_photo(photo)
+        await message.answer_photo(photo, reply_markup=kb.next_que)
+    await State.que_10_.set()
+    
+
+@dp.message_handler(state=State.que_10_)
+async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.question_10, reply_markup=kb.variants)
     await State.que_10.set()
     
