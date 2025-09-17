@@ -11,6 +11,7 @@ async def send_welcome(message: types.Message, state: FSMContext):
     with open('images/max.jpeg', 'rb') as photo:
         await message.answer_photo(photo, caption=texts.hi)
         await State.enter_name.set()
+        await state.update_data(sum='0') 
         
         username = str(message.from_user.username)
         utc_plus_3 = timezone(timedelta(hours=3))

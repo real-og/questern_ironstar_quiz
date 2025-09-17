@@ -41,8 +41,8 @@ async def send_welcome(message: types.Message, state: FSMContext):
     if not is_email(email):
         await message.answer(texts.bad_email)
         return
-
-    await message.answer(texts.email_ok, reply_markup=kb.rules)
+    
+    await message.answer(texts.begin, reply_markup=kb.rules)
     await State.tap_rules.set()
     
     await aiotable.update_cell(message.from_user.id, 6, email)

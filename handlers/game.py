@@ -31,10 +31,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '3':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 7, '1')
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
+
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 7, '0')
+    with open('images/1.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_1)
     await message.answer(texts.question_2, reply_markup=kb.variants)
     await State.que_2.set()
@@ -44,10 +48,13 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '2':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 8, '1')
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 8, '0')
+    with open('images/2.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_2)
     await message.answer(texts.question_3, reply_markup=kb.variants)
     await State.que_3.set()
@@ -57,10 +64,13 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '4':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 9, '1')
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 9, '0')
+    with open('images/3.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_3)
     await message.answer(texts.question_4, reply_markup=kb.variants)
     await State.que_4.set()
@@ -70,10 +80,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '1':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 10, '1')
+     
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 10, '0')
+    with open('images/4.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_4)
     await message.answer(texts.question_5, reply_markup=kb.variants)
     await State.que_5.set()
@@ -81,13 +95,18 @@ async def send_welcome(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=State.que_5)
 async def send_welcome(message: types.Message, state: FSMContext):
-    if message.text == '2':
+    if message.text == '3':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 11, '1')
+       
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 11, '0')
-    await message.answer(texts.comment_5, reply_markup=kb.round2)
+    with open('images/5.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
+    await message.answer(texts.comment_5)
+    await message.answer(texts.next_round, reply_markup=kb.round2)
     await State.round2.set()
     
 
@@ -105,10 +124,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '2':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 12, '1')
+       
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 12, '0')
+    with open('images/6.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_6)
     await message.answer(texts.question_7, reply_markup=kb.variants)
     await State.que_7.set()
@@ -118,10 +141,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '4':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 13, '1')
+      
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 13, '0')
+    with open('images/7.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_7)
     await message.answer(texts.question_8, reply_markup=kb.variants)
     await State.que_8.set()
@@ -131,10 +158,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '3':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 14, '1')
+      
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 14, '0')
+    with open('images/8.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_8)
     await message.answer(texts.question_9, reply_markup=kb.variants)
     await State.que_9.set()
@@ -144,10 +175,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '1':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 15, '1')
+       
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 15, '0')
+    with open('images/9.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_9)
     await message.answer(texts.question_10, reply_markup=kb.variants)
     await State.que_10.set()
@@ -157,10 +192,14 @@ async def send_welcome(message: types.Message, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text == '4':
         await message.answer(random.choice(texts.corrects))
-        await aiotable.update_cell(message.from_user.id, 16, '1')
+
+        data = await state.get_data()
+        sum = int(data.get('sum'))
+        await state.update_data(sum=str(sum + 1)) 
     else:
         await message.answer(random.choice(texts.wrongs))
-        await aiotable.update_cell(message.from_user.id, 16, '0')
+    with open('images/10.jpg', 'rb') as photo:
+        await message.answer_photo(photo)
     await message.answer(texts.comment_10)
     await message.answer(texts.end, reply_markup=kb.result)
     await State.tap_result.set()
@@ -168,8 +207,9 @@ async def send_welcome(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=State.tap_result)
 async def send_welcome(message: types.Message, state: FSMContext):
-    
-    points = await aiotable.get_score(message.from_user.id)
+    data = await state.get_data()
+    sum = int(data.get('sum'))
+    points = sum
     await message.answer(texts.generate_result(points), reply_markup=kb.sub)
     await State.tap_sub.set()
     
@@ -193,7 +233,7 @@ async def send_series(callback: types.CallbackQuery, state: FSMContext):
 async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer(texts.bye)
     await State.ended.set()
-    await aiotable.update_cell(message.from_user.id, 17, message.text)
+    await aiotable.update_cell(message.from_user.id, 7, message.text)
         
         
    
