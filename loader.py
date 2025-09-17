@@ -11,8 +11,8 @@ BOT_TOKEN = str(os.environ.get('BOT_TOKEN'))
 CHANNEL_ID = str(os.environ.get('TEST_CHANNEL_ID'))
 SHEET_LINK = str(os.environ.get('SHEET_LINK'))
 
-# storage = RedisStorage2(db=2)
-storage = MemoryStorage()
+storage = RedisStorage2(db=3)
+# storage = MemoryStorage()
 
 bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot, storage=storage)
