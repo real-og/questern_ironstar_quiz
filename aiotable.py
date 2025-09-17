@@ -59,12 +59,12 @@ async def get_score(id):
     
     needed_row = None
     for row in all_values:
-        print(row)
+
         if row and str(row[1]) == str(id):
             needed_row = row
             break
     sum = 0
-    print(needed_row)
+    
     if needed_row:
         for i in range(6, 16):
             sum += int(needed_row[i])
