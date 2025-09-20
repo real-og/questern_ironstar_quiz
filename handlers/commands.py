@@ -4,6 +4,8 @@ from aiogram.dispatcher import FSMContext
 import texts
 from states import State
 import aiotable
+from aiogram.utils.exceptions import BotBlocked, ChatNotFound
+import asyncio
 from datetime import datetime, timedelta, timezone
 
 @dp.message_handler(commands=['start'], state="*")
@@ -49,4 +51,36 @@ async def send_welcome(message: types.Message, state: FSMContext):
             print('yes')
             
     await aiotable.update_cell_strict(1, 9, 'no')
-        
+    
+
+@dp.message_handler(commands=['broadcast'], state="*")
+async def send_welcome(message: types.Message, state: FSMContext):
+    print(message.text)
+    nums = message.text.split()
+    n1 = nums[1]
+    n2 = nums[2]
+    n3 = nums[3]
+    all = await aiotable.get_all()
+    user_ids = []
+    for user in all[1:]:
+        user_ids.append(user[1])
+    user_ids = list(set(user_ids))
+    text = f"""Внимание, финиш! 🏁
+Розыгрыш состоялся, и у нас есть три чемпиона, которые получают фирменный мерч от IRONSTAR:
+⚡️ Участник {n1} - толстовку для тёплых стартов!
+⚡️ Участник {n2}  - футболку для жарких тренировок!
+⚡️ Участник {n3} - кепку для стильного забега!
+
+Всем остальным — спасибо за участие! Следи за новыми стартами на сайте 👉 <a href="iron-star.com">IRONSTAR</a>
+До следующих рекордов! 💪🔥"""
+    for user_id in user_ids:
+        try:
+            await bot.send_message(user_id, text, disable_web_page_preview=True)
+            print(f"✅ Сообщение отправлено {user_id}")
+            await asyncio.sleep(1)  # минимальная задержка, чтобы избежать спама
+        except BotBlocked:
+            print(f"⛔ Бот заблокирован пользователем {user_id}")
+        except ChatNotFound:
+            print(f"❌ Чат не найден для {user_id}")
+        except Exception as e:
+            print(f"⚠️ Ошибка при отправке {user_id}: {e}")
