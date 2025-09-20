@@ -1,4 +1,4 @@
-from loader import dp
+from loader import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 import texts
@@ -30,3 +30,23 @@ async def send_welcome(message: types.Message, state: FSMContext):
 @dp.message_handler(commands=['help'], state="*")
 async def send_welcome(message: types.Message, state: FSMContext):
     await message.answer("Если Вам нужна помощь, пишите @lenkkey")
+    
+
+@dp.message_handler(commands=['check'], state="*")
+async def send_welcome(message: types.Message, state: FSMContext):
+    print('here')
+    all = await aiotable.get_all()
+    for i, user in enumerate(all[1:]):
+        print(i, user[1])
+        num = i + 2
+        user_status = await bot.get_chat_member(-1001016200452, user[1])
+
+        if user_status['status'] == 'left':
+            await aiotable.update_cell_strict(num, 9, 'no')
+            print('no')
+        else:
+            await aiotable.update_cell_strict(num, 9, 'yes')
+            print('yes')
+            
+    await aiotable.update_cell_strict(1, 9, 'no')
+        

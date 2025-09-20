@@ -70,5 +70,14 @@ async def get_score(id):
             sum += int(needed_row[i])
     
     return sum
+
+async def get_all():
+    sheet = await get_sheet()
+    all_values = await sheet.get_all_values()
+    return all_values
     
+
+async def update_cell_strict(row_number, cell_num, value):
+    sheet = await get_sheet()
+    await sheet.update_cell(row_number, cell_num, str(value))
     
